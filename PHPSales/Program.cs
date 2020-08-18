@@ -12,7 +12,12 @@ namespace PHPSales
         [STAThread]
         private static void Main()
         {
+            //Example code
             InitDB();
+            InsertRecord("record name", 4.7, "2343-33-55");
+            PrintRows();
+            exportTable("C:\\Users\\Tristan Sutton\\Documents","exporteddb" );
+            
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
