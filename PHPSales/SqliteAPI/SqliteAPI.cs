@@ -1,7 +1,13 @@
-﻿namespace PHPSales.SqliteAPI
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
+using System.Text;
+
+namespace PHPSales.SqliteAPI
 {
     public class SqliteAPI
-    {        private static readonly string cs = @"URI=file:./test.db";
+    {        private static readonly string cs = @"URI=file:./sales.db";
         private static readonly SQLiteConnection con = new SQLiteConnection(cs);
 
         public static void InitDB()
@@ -43,7 +49,7 @@
 
         public static void PrintRows()
         {
-            var stm = "SELECT * FROM tblRecords LIMIT 5";
+            var stm = "SELECT * FROM tblRecords";
             using var readercmd = new SQLiteCommand(stm, con);
             using var rdr = readercmd.ExecuteReader();
             while (rdr.Read())
@@ -71,11 +77,16 @@
                 csv.AppendLine($"{record.id}, {record.itemName}, {record.itemValue}, {record.saleDate}");
             try
             {
-                File.WriteAllText($"{path}/{filename}.csv", csv.ToString());
+                File.WriteAllText($"{path}\\{filename}.csv", csv.ToString());
             }
             catch (DirectoryNotFoundException)
             {
                 Console.WriteLine("The path specified could not be found. Make sure your capitalisation is correct.");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Console.WriteLine("You do not have sufficient permissions to write to the specified path. " +
+                                  "Try using the path C:\\Users\\YourUsername\\Documents");
             }
         }
 

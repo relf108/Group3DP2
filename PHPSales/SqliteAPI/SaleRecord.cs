@@ -1,4 +1,4 @@
-namespace PreparedStatement
+namespace PHPSales.SqliteAPI
 {
     public class SaleRecord
     {
