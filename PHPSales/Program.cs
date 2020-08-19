@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using PHPSales.SqliteAPI;
 using static PHPSales.SqliteAPI.SqliteAPI;
 
 namespace PHPSales
@@ -14,9 +15,9 @@ namespace PHPSales
         {
             //Example code
             InitDB();
-            InsertRecord("record name", 4.7, "2343-33-55");
-            PrintRows();
-            exportTable("C:\\Users\\Tristan Sutton\\Documents","exporteddb" );
+            RecordFunctions.InsertRecord("record name", 4.7, "2343-33-55");
+            RecordFunctions.PrintRows();
+            RecordFunctions.exportTable("C:\\Users\\Tristan Sutton\\Documents","exporteddb" );
             
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using PHPSales.SqliteAPI;
 
 namespace PHPSales
 {
@@ -22,7 +23,7 @@ namespace PHPSales
         private void button1_click(object sender, EventArgs e)
         {
             MessageBox.Show("Inserted record");
-            SqliteAPI.SqliteAPI.InsertRecord(name:"testItem", value: 4, "2001-02-12" );
+            RecordFunctions.InsertRecord(name:"testItem", value: 4, "2001-02-12" );
         }
     }
 }

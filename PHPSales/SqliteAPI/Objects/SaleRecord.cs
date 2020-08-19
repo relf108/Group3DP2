@@ -1,4 +1,4 @@
-namespace PHPSales.SqliteAPI
+namespace PHPSales.SqliteAPI.Objects
 {
     public class SaleRecord
     {
