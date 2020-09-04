@@ -6,3 +6,4 @@ Clone project files:
 ```
 git clone https://github.com/relf108/Group3DP2.git
 ```
+## Read the WIKI for API documentation
