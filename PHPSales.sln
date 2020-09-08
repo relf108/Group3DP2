@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHPSales", "PHPSales\PHPSales.csproj", "{CF206023-3A0B-4573-B9F6-68AD014BEF12}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PHPSales", "PHPSales\PHPSales.csproj", "{41577AE7-73B3-43FE-94EB-659AB9EA06E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteAPI", "SqliteAPI\SqliteAPI.csproj", "{0FE4EB32-B99E-4815-A382-DF6EFDBAB063}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF206023-3A0B-4573-B9F6-68AD014BEF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF206023-3A0B-4573-B9F6-68AD014BEF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF206023-3A0B-4573-B9F6-68AD014BEF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF206023-3A0B-4573-B9F6-68AD014BEF12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41577AE7-73B3-43FE-94EB-659AB9EA06E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41577AE7-73B3-43FE-94EB-659AB9EA06E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41577AE7-73B3-43FE-94EB-659AB9EA06E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41577AE7-73B3-43FE-94EB-659AB9EA06E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE4EB32-B99E-4815-A382-DF6EFDBAB063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE4EB32-B99E-4815-A382-DF6EFDBAB063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE4EB32-B99E-4815-A382-DF6EFDBAB063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE4EB32-B99E-4815-A382-DF6EFDBAB063}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDFBA468-70BF-4F57-8231-1A141D415F4D}
 	EndGlobalSection
 EndGlobal
