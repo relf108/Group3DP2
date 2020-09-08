@@ -21,5 +21,10 @@ namespace PHPSales {
             MessageBox.Show("Inserted record");
             RecordFunctions.InsertRecord(name: "testItem", value: 4, "2001-02-12");
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Visible = false;
+        }
     }
 }
