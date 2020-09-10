@@ -1,3 +1,5 @@
+.vs
 .idea
-PHPSales/bin
-
+bin/
+PHPSales/obj/
+SqliteAPI/obj/

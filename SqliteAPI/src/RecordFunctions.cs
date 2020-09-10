@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using System.Text;
-using PHPSales.SqliteAPI.Objects;
+using SqliteAPI.Objects;
 
-namespace PHPSales.SqliteAPI
+namespace SqliteAPI
 {
     public class RecordFunctions
     {

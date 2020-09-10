@@ -1,6 +1,6 @@
 ﻿using System.Data.SQLite;
 
-namespace PHPSales.SqliteAPI
+namespace SqliteAPI
 {
     public class SqliteAPI
     {

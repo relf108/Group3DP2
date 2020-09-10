@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using PHPSales.SqliteAPI.Objects;
+using SqliteAPI.Objects;
 
-namespace PHPSales.SqliteAPI
+namespace SqliteAPI
 {
     public class UserFunctions
     {

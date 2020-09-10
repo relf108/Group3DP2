@@ -1,4 +1,4 @@
-﻿namespace PHPSales.SqliteAPI.Objects
+﻿namespace SqliteAPI.Objects
 {
     public class User
     {
