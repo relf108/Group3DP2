@@ -113,6 +113,7 @@
             this.Viewbutton3.TabIndex = 5;
             this.Viewbutton3.Text = "Remove";
             this.Viewbutton3.UseVisualStyleBackColor = true;
+            this.Viewbutton3.Click += new System.EventHandler(this.Viewbutton3_Click);
             // 
             // Viewlabel4
             // 

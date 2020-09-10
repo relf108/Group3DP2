@@ -29,5 +29,10 @@ namespace PHPSales.src.Forms
         {
 
         }
+
+        private void Viewbutton3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
