@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using SqliteAPI;
 
-namespace PHPSales {
+namespace PHPSales.Forms {
 
 	public partial class Form1 : Form {
 

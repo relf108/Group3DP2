@@ -1,18 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using SqliteAPI;
+using SqliteAPI.Objects;
 
-namespace PHPSales.src.Forms
+namespace PHPSales.Forms
 {
     public partial class View : Form
     {
+
+        //Populates the order list box with sales records in the db
+        //SaleRecord[] orderList = RecordFunctions.GetRecords();
+        BindingList<SaleRecord> orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
+        private Object[] orderListO;
+
+        public void PopulateOrders()
+        {
+            orderListO = new Object[RecordFunctions.GetRecords().Length];
+            for (int i = 0; i < orderList.Count; i++)
+            {
+                String tmp = new string("Name: " + orderList[i].itemName + " | Price: " + orderList[i].itemValue
+                                        + " | Sale Date: " + orderList[i].saleDate);
+                orderListO[i] = tmp;
+            }
+            OrdersListBox.DataSource = orderListO;
+           // this.orderList
+        }
         public View()
         {
             InitializeComponent();
+            PopulateOrders();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -33,6 +52,14 @@ namespace PHPSales.src.Forms
         private void Viewbutton3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void EditClick(object sender, EventArgs e)
+        {
+            //Indexs in the db start at one for some reason but cbf fixing
+            int editIndex = OrdersListBox.SelectedIndex + 1;
+            RecordFunctions.EditRecord(editIndex, "Edited via click", 2.5, "2001-02-12");
+            PopulateOrders();
         }
     }
 }

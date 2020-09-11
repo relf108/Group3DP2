@@ -1,4 +1,9 @@
-﻿namespace PHPSales.src.Forms
+﻿using System;
+using System.Collections;
+using System.Windows.Forms;
+using SqliteAPI;
+
+namespace PHPSales.Forms
 {
     partial class View
     {
@@ -28,99 +33,101 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ViewlistBox1 = new System.Windows.Forms.ListBox();
-            this.ViewlistBox2 = new System.Windows.Forms.ListBox();
-            this.Viewlabel1 = new System.Windows.Forms.Label();
-            this.Viewlabel2 = new System.Windows.Forms.Label();
-            this.Viewlabel3 = new System.Windows.Forms.Label();
-            this.Viewbutton1 = new System.Windows.Forms.Button();
-            this.Viewbutton2 = new System.Windows.Forms.Button();
-            this.Viewbutton3 = new System.Windows.Forms.Button();
+            this.OrdersListBox = new System.Windows.Forms.ListBox();
+            this.ItemsListBox = new System.Windows.Forms.ListBox();
+            this.DateLabel = new System.Windows.Forms.Label();
+            this.EmployeeIDLabel = new System.Windows.Forms.Label();
+            this.CoolCustomerLabel = new System.Windows.Forms.Label();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.RemoveButton = new System.Windows.Forms.Button();
             this.Viewlabel4 = new System.Windows.Forms.Label();
             this.Viewlabel5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // ViewlistBox1
+            // OrdersListBox
             // 
-            this.ViewlistBox1.FormattingEnabled = true;
-            this.ViewlistBox1.ItemHeight = 15;
-            this.ViewlistBox1.Location = new System.Drawing.Point(65, 43);
-            this.ViewlistBox1.Name = "ViewlistBox1";
-            this.ViewlistBox1.Size = new System.Drawing.Size(332, 349);
-            this.ViewlistBox1.TabIndex = 0;
+            this.OrdersListBox.FormattingEnabled = true;
+            this.OrdersListBox.ItemHeight = 16;
+            this.OrdersListBox.Location = new System.Drawing.Point(74, 46);
+            this.OrdersListBox.Name = "OrdersListBox";
+            this.OrdersListBox.Size = new System.Drawing.Size(379, 372);
+            this.OrdersListBox.TabIndex = 0;
+
             // 
-            // ViewlistBox2
+            // ItemsListBox
             // 
-            this.ViewlistBox2.FormattingEnabled = true;
-            this.ViewlistBox2.ItemHeight = 15;
-            this.ViewlistBox2.Location = new System.Drawing.Point(495, 42);
-            this.ViewlistBox2.Name = "ViewlistBox2";
-            this.ViewlistBox2.Size = new System.Drawing.Size(285, 184);
-            this.ViewlistBox2.TabIndex = 1;
+            this.ItemsListBox.FormattingEnabled = true;
+            this.ItemsListBox.ItemHeight = 16;
+            this.ItemsListBox.Location = new System.Drawing.Point(566, 45);
+            this.ItemsListBox.Name = "ItemsListBox";
+            this.ItemsListBox.Size = new System.Drawing.Size(325, 196);
+            this.ItemsListBox.TabIndex = 1;
             // 
-            // Viewlabel1
+            // DateLabel
             // 
-            this.Viewlabel1.AutoSize = true;
-            this.Viewlabel1.Location = new System.Drawing.Point(495, 260);
-            this.Viewlabel1.Name = "Viewlabel1";
-            this.Viewlabel1.Size = new System.Drawing.Size(31, 15);
-            this.Viewlabel1.TabIndex = 2;
-            this.Viewlabel1.Text = "Date";
-            this.Viewlabel1.Click += new System.EventHandler(this.label1_Click);
+            this.DateLabel.AutoSize = true;
+            this.DateLabel.Location = new System.Drawing.Point(566, 277);
+            this.DateLabel.Name = "DateLabel";
+            this.DateLabel.Size = new System.Drawing.Size(37, 16);
+            this.DateLabel.TabIndex = 2;
+            this.DateLabel.Text = "Date";
+            this.DateLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Viewlabel2
+            // EmployeeIDLabel
             // 
-            this.Viewlabel2.AutoSize = true;
-            this.Viewlabel2.Location = new System.Drawing.Point(495, 293);
-            this.Viewlabel2.Name = "Viewlabel2";
-            this.Viewlabel2.Size = new System.Drawing.Size(73, 15);
-            this.Viewlabel2.TabIndex = 3;
-            this.Viewlabel2.Text = "Employee ID";
+            this.EmployeeIDLabel.AutoSize = true;
+            this.EmployeeIDLabel.Location = new System.Drawing.Point(566, 313);
+            this.EmployeeIDLabel.Name = "EmployeeIDLabel";
+            this.EmployeeIDLabel.Size = new System.Drawing.Size(86, 16);
+            this.EmployeeIDLabel.TabIndex = 3;
+            this.EmployeeIDLabel.Text = "Employee ID";
             // 
-            // Viewlabel3
+            // CoolCustomerLabel
             // 
-            this.Viewlabel3.AutoSize = true;
-            this.Viewlabel3.Location = new System.Drawing.Point(495, 328);
-            this.Viewlabel3.Name = "Viewlabel3";
-            this.Viewlabel3.Size = new System.Drawing.Size(92, 15);
-            this.Viewlabel3.TabIndex = 4;
-            this.Viewlabel3.Text = "Cool Customer?";
+            this.CoolCustomerLabel.AutoSize = true;
+            this.CoolCustomerLabel.Location = new System.Drawing.Point(566, 350);
+            this.CoolCustomerLabel.Name = "CoolCustomerLabel";
+            this.CoolCustomerLabel.Size = new System.Drawing.Size(103, 16);
+            this.CoolCustomerLabel.TabIndex = 4;
+            this.CoolCustomerLabel.Text = "Cool Customer?";
             // 
-            // Viewbutton1
+            // BackButton
             // 
-            this.Viewbutton1.Location = new System.Drawing.Point(498, 362);
-            this.Viewbutton1.Name = "Viewbutton1";
-            this.Viewbutton1.Size = new System.Drawing.Size(90, 35);
-            this.Viewbutton1.TabIndex = 5;
-            this.Viewbutton1.Text = "Back";
-            this.Viewbutton1.UseVisualStyleBackColor = true;
-            this.Viewbutton1.Click += new System.EventHandler(this.Viewbutton1_Click);
+            this.BackButton.Location = new System.Drawing.Point(569, 386);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(103, 37);
+            this.BackButton.TabIndex = 5;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.Viewbutton1_Click);
             // 
-            // Viewbutton2
+            // EditButton
             // 
-            this.Viewbutton2.Location = new System.Drawing.Point(594, 362);
-            this.Viewbutton2.Name = "Viewbutton2";
-            this.Viewbutton2.Size = new System.Drawing.Size(90, 35);
-            this.Viewbutton2.TabIndex = 5;
-            this.Viewbutton2.Text = "Edit";
-            this.Viewbutton2.UseVisualStyleBackColor = true;
+            this.EditButton.Location = new System.Drawing.Point(679, 386);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(103, 37);
+            this.EditButton.TabIndex = 5;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditClick);
             // 
-            // Viewbutton3
+            // RemoveButton
             // 
-            this.Viewbutton3.Location = new System.Drawing.Point(690, 362);
-            this.Viewbutton3.Name = "Viewbutton3";
-            this.Viewbutton3.Size = new System.Drawing.Size(90, 35);
-            this.Viewbutton3.TabIndex = 5;
-            this.Viewbutton3.Text = "Remove";
-            this.Viewbutton3.UseVisualStyleBackColor = true;
-            this.Viewbutton3.Click += new System.EventHandler(this.Viewbutton3_Click);
+            this.RemoveButton.Location = new System.Drawing.Point(789, 386);
+            this.RemoveButton.Name = "RemoveButton";
+            this.RemoveButton.Size = new System.Drawing.Size(103, 37);
+            this.RemoveButton.TabIndex = 5;
+            this.RemoveButton.Text = "Remove";
+            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.Viewbutton3_Click);
             // 
             // Viewlabel4
             // 
             this.Viewlabel4.AutoSize = true;
-            this.Viewlabel4.Location = new System.Drawing.Point(68, 18);
+            this.Viewlabel4.Location = new System.Drawing.Point(78, 19);
             this.Viewlabel4.Name = "Viewlabel4";
-            this.Viewlabel4.Size = new System.Drawing.Size(42, 15);
+            this.Viewlabel4.Size = new System.Drawing.Size(49, 16);
             this.Viewlabel4.TabIndex = 6;
             this.Viewlabel4.Text = "Orders";
             this.Viewlabel4.Click += new System.EventHandler(this.label4_Click);
@@ -128,44 +135,42 @@
             // Viewlabel5
             // 
             this.Viewlabel5.AutoSize = true;
-            this.Viewlabel5.Location = new System.Drawing.Point(495, 18);
+            this.Viewlabel5.Location = new System.Drawing.Point(566, 19);
             this.Viewlabel5.Name = "Viewlabel5";
-            this.Viewlabel5.Size = new System.Drawing.Size(36, 15);
+            this.Viewlabel5.Size = new System.Drawing.Size(40, 16);
             this.Viewlabel5.TabIndex = 7;
             this.Viewlabel5.Text = "Items";
             // 
             // View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 480);
             this.Controls.Add(this.Viewlabel5);
             this.Controls.Add(this.Viewlabel4);
-            this.Controls.Add(this.Viewbutton3);
-            this.Controls.Add(this.Viewbutton2);
-            this.Controls.Add(this.Viewbutton1);
-            this.Controls.Add(this.Viewlabel3);
-            this.Controls.Add(this.Viewlabel2);
-            this.Controls.Add(this.Viewlabel1);
-            this.Controls.Add(this.ViewlistBox2);
-            this.Controls.Add(this.ViewlistBox1);
+            this.Controls.Add(this.RemoveButton);
+            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.BackButton);
+            this.Controls.Add(this.CoolCustomerLabel);
+            this.Controls.Add(this.EmployeeIDLabel);
+            this.Controls.Add(this.DateLabel);
+            this.Controls.Add(this.ItemsListBox);
+            this.Controls.Add(this.OrdersListBox);
             this.Name = "View";
             this.Text = "View";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox ViewlistBox1;
-        private System.Windows.Forms.ListBox ViewlistBox2;
-        private System.Windows.Forms.Label Viewlabel1;
-        private System.Windows.Forms.Label Viewlabel2;
-        private System.Windows.Forms.Label Viewlabel3;
-        private System.Windows.Forms.Button Viewbutton1;
-        private System.Windows.Forms.Button Viewbutton2;
-        private System.Windows.Forms.Button Viewbutton3;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Label CoolCustomerLabel;
+        private System.Windows.Forms.Label DateLabel;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Label EmployeeIDLabel;
+        private System.Windows.Forms.ListBox ItemsListBox;
+        private System.Windows.Forms.ListBox OrdersListBox;
+        private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Label Viewlabel4;
         private System.Windows.Forms.Label Viewlabel5;
     }

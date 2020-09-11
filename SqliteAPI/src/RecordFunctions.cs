@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
@@ -26,6 +27,29 @@ namespace SqliteAPI
             cmd.ExecuteNonQuery();
         }
 
+        public static SaleRecord[] GetRecords()
+        {
+            ArrayList recordsArray = new ArrayList();
+            var stm = "SELECT * FROM tblRecords";
+            using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
+            using var rdr = readercmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                SaleRecord record;
+                record = new SaleRecord(rdr.GetInt32(0), rdr.GetString(1),
+                    rdr.GetDouble(2), rdr.GetString(3));
+                recordsArray.Add(record);
+            }
+            SaleRecord[] records = new SaleRecord[recordsArray.Count];
+
+            for (int i = 0; i < recordsArray.Count; i++)
+            {
+                records[i] = recordsArray[i] as SaleRecord;
+            }
+
+            return records;
+        }
+        
         public static void EditRecord(int targetPrimaryKey, string newName, double newValue, string newDate)
         {
             using var cmd = new SQLiteCommand(SqliteAPI.Con);
