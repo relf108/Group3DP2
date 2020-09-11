@@ -14,12 +14,9 @@ namespace PHPSales.Forms
         //Populates the order list box with sales records in the db
         //SaleRecord[] orderList = RecordFunctions.GetRecords();
         BindingList<SaleRecord> orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
-        private Object[] orderListO;
-
         public void PopulateOrders()
         {
             orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
-            orderListO = new Object[RecordFunctions.GetRecords().Length];
             OrdersListBox.Items.Clear();
             for (int i = 0; i < orderList.Count; i++)
             {
@@ -27,8 +24,7 @@ namespace PHPSales.Forms
                                         + " | Sale Date: " + orderList[i].saleDate);
                 OrdersListBox.Items.Add(tmp);
             }
-            //OrdersListBox.Items. = orderListO;
-           // this.orderList
+
         }
         public View()
         {
