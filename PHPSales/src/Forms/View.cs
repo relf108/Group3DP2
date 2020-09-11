@@ -11,24 +11,22 @@ namespace PHPSales.Forms
     public partial class View : Form
     {
 
-        //Populates the order list box with sales records in the db
-        //SaleRecord[] orderList = RecordFunctions.GetRecords();
-        BindingList<SaleRecord> orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
-        private Object[] orderListO;
-
         public void PopulateOrders()
         {
-            orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
-            orderListO = new Object[RecordFunctions.GetRecords().Length];
+            //Populate the orderlist with sales records in the db
+            BindingList<SaleRecord> orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
+
+            // Clear OrdersListBox ready for new data
             OrdersListBox.Items.Clear();
+
+            //iterate through orderList to format and add items to list box 
             for (int i = 0; i < orderList.Count; i++)
             {
                 String tmp = new string("Name: " + orderList[i].itemName + " | Price: " + orderList[i].itemValue
                                         + " | Sale Date: " + orderList[i].saleDate);
                 OrdersListBox.Items.Add(tmp);
             }
-            //OrdersListBox.Items. = orderListO;
-           // this.orderList
+
         }
         public View()
         {
@@ -58,11 +56,18 @@ namespace PHPSales.Forms
 
         private void EditClick(object sender, EventArgs e)
         {
-            //Indexs in the db start at one for some reason but cbf fixing
-            int editIndex = OrdersListBox.SelectedIndex + 1;
-            RecordFunctions.EditRecord(editIndex, "Test", 2.5, "2001-02-12");
+            //Keep selected index for record update and to preserve the highlighted record
+            int editIndex = OrdersListBox.SelectedIndex;
+
+            //edit the record int the DB
+            //Indexs in the db start at one for some reason, may fix later
+            RecordFunctions.EditRecord(editIndex + 1, "Test2", 2.5, "2001-02-12");
+
+            //Re-populate the list box
             PopulateOrders();
-            OrdersListBox.Refresh();
+
+            //keep previous selected item highlighted
+            OrdersListBox.SelectedIndex = editIndex;
         }
 
         private void OrdersListBox_SelectedIndexChanged(object sender, EventArgs e)
