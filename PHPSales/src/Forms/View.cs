@@ -18,14 +18,16 @@ namespace PHPSales.Forms
 
         public void PopulateOrders()
         {
+            orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
             orderListO = new Object[RecordFunctions.GetRecords().Length];
+            OrdersListBox.Items.Clear();
             for (int i = 0; i < orderList.Count; i++)
             {
                 String tmp = new string("Name: " + orderList[i].itemName + " | Price: " + orderList[i].itemValue
                                         + " | Sale Date: " + orderList[i].saleDate);
-                orderListO[i] = tmp;
+                OrdersListBox.Items.Add(tmp);
             }
-            OrdersListBox.DataSource = orderListO;
+            //OrdersListBox.Items. = orderListO;
            // this.orderList
         }
         public View()
@@ -58,8 +60,14 @@ namespace PHPSales.Forms
         {
             //Indexs in the db start at one for some reason but cbf fixing
             int editIndex = OrdersListBox.SelectedIndex + 1;
-            RecordFunctions.EditRecord(editIndex, "Edited via click", 2.5, "2001-02-12");
+            RecordFunctions.EditRecord(editIndex, "Test", 2.5, "2001-02-12");
             PopulateOrders();
+            OrdersListBox.Refresh();
+        }
+
+        private void OrdersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
