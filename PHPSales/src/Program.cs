@@ -23,7 +23,7 @@ namespace PHPSales {
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new View());
+			Application.Run(new Form1());
 
 		}
 

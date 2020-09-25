@@ -55,7 +55,7 @@ namespace PHPSales.Forms
         }
         private void Button6_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void Button1_Click(object sender, EventArgs e)

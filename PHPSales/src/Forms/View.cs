@@ -49,7 +49,7 @@ namespace PHPSales.Forms
 
         private void Viewbutton1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void RemoveClick(object sender, EventArgs e)
