@@ -120,7 +120,7 @@ namespace PHPSales.Forms
             this.RemoveButton.TabIndex = 5;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
-            this.RemoveButton.Click += new System.EventHandler(this.Viewbutton3_Click);
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveClick);
             // 
             // Viewlabel4
             // 

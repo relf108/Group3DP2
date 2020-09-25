@@ -68,6 +68,7 @@
             this.Increasebutton.TabIndex = 1;
             this.Increasebutton.Text = "Increase";
             this.Increasebutton.UseVisualStyleBackColor = true;
+            this.Increasebutton.Click += new System.EventHandler(this.incrementOrderValue);
             // 
             // Decreasebutton
             // 
@@ -77,6 +78,8 @@
             this.Decreasebutton.TabIndex = 1;
             this.Decreasebutton.Text = "Decrease";
             this.Decreasebutton.UseVisualStyleBackColor = true;
+            this.Decreasebutton.Click += new System.EventHandler(this.decrementOrderValue);
+
             // 
             // AddOrdercomboBox1
             // 
@@ -94,6 +97,8 @@
             this.AddItembutton.TabIndex = 1;
             this.AddItembutton.Text = "Add";
             this.AddItembutton.UseVisualStyleBackColor = true;
+            this.AddItembutton.Click += new System.EventHandler(this.Button6_Click);
+
             // 
             // AddOrdertextBox1
             // 

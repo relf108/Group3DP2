@@ -49,9 +49,16 @@ namespace PHPSales.Forms
 
         }
 
-        private void Viewbutton3_Click(object sender, EventArgs e)
+        private void RemoveClick(object sender, EventArgs e)
         {
+            //Store index to of item to be removed
+            int removeIndex = OrdersListBox.SelectedIndex;
 
+            //Calls into sqlite api to delete record at index
+            RecordFunctions.DeleteRecord(removeIndex +1);
+
+            //Re-populate the list box
+            PopulateOrders();
         }
 
         private void EditClick(object sender, EventArgs e)
