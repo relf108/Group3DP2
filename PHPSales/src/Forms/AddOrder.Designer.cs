@@ -49,6 +49,7 @@
             this.AddOrderlistBox1.Name = "AddOrderlistBox1";
             this.AddOrderlistBox1.Size = new System.Drawing.Size(348, 289);
             this.AddOrderlistBox1.TabIndex = 0;
+            this.AddOrderlistBox1.DisplayMember = "Text";
             // 
             // Removebutton
             // 
@@ -115,6 +116,7 @@
             this.NewOrderbutton.TabIndex = 4;
             this.NewOrderbutton.Text = "New Order";
             this.NewOrderbutton.UseVisualStyleBackColor = true;
+            this.NewOrderbutton.Click += new System.EventHandler(this.AddItem);
             // 
             // Clearbutton
             // 

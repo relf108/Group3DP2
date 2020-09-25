@@ -53,6 +53,7 @@ namespace PHPSales.Forms
             this.OrdersListBox.Name = "OrdersListBox";
             this.OrdersListBox.Size = new System.Drawing.Size(332, 349);
             this.OrdersListBox.TabIndex = 0;
+            this.OrdersListBox.DisplayMember = "Text";
             this.OrdersListBox.SelectedIndexChanged += new System.EventHandler(this.OrdersListBox_SelectedIndexChanged);
             // 
             // ItemsListBox
