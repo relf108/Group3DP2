@@ -72,21 +72,26 @@ namespace SqliteAPI
         
         public static User getUserByUsername(string userName)
         {
-            var stm = "SELECT * FROM tblUser WHERE userName = " + userName;
+            var stm = $"SELECT * FROM tblUser WHERE userName = \'{userName}\'";
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
+            
             if (rdr.HasRows)
             {
-                return new User(rdr.GetInt32(0), rdr.GetString(1),rdr.GetString(2), rdr.GetBoolean(3));
+                if (rdr.Read())
+                    return new User(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetBoolean(3));
+                else return null;
             }
-            return null;
-            }
+            else
+                return null;
+        }
 
         public static bool authUser(string userName, string userPassword)
         {
-            if(getUserByUsername(userName).userPassword.Equals(userPassword))
+            var temp = getUserByUsername(userName);
+            if (temp.userPassword.Equals(userPassword))
             {
-                return getUserByUsername(userName).userRole;
+                return temp.userRole;
             }
             throw new Exception("An exception occured: The user does not exist or the username and password do not match");
         }
