@@ -47,6 +47,7 @@ namespace SqliteAPI
         
         public static List<Item> listRows()
         {
+            
             var list = new List<Item>();
             var stm = "SELECT * FROM tblInventory";
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);

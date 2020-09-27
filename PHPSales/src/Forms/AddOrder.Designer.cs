@@ -69,7 +69,7 @@
             this.Increasebutton.TabIndex = 1;
             this.Increasebutton.Text = "Increase";
             this.Increasebutton.UseVisualStyleBackColor = true;
-            this.Increasebutton.Click += new System.EventHandler(this.incrementOrderValue);
+            this.Increasebutton.Click += new System.EventHandler(this.IncrementItemQuantity);
             // 
             // Decreasebutton
             // 
@@ -79,7 +79,7 @@
             this.Decreasebutton.TabIndex = 1;
             this.Decreasebutton.Text = "Decrease";
             this.Decreasebutton.UseVisualStyleBackColor = true;
-            this.Decreasebutton.Click += new System.EventHandler(this.decrementOrderValue);
+            this.Decreasebutton.Click += new System.EventHandler(this.DecrementItemQuantity);
 
             // 
             // AddOrdercomboBox1

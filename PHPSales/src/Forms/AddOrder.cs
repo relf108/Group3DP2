@@ -9,7 +9,7 @@ namespace PHPSales.Forms
 {
     public partial class AddOrder : Form
     {
-        public int orderValue = 0;
+        public int itemQuantity = 0;
         
         
         //currently modifying this to be a list of items in the inventory
@@ -37,21 +37,21 @@ namespace PHPSales.Forms
             PopulateItems();
         }
 
-        private void incrementOrderValue(object sender, EventArgs e)
+        private void IncrementItemQuantity(object sender, EventArgs e)
         {
-            orderValue++;
+            itemQuantity++;
         }
 
-        private void decrementOrderValue(object sender, EventArgs e)
+        private void DecrementItemQuantity(object sender, EventArgs e)
         {
-            orderValue--;
+            itemQuantity--;
         }
 
         private void AddItem(object sender, EventArgs e)
         {
             String name = AddOrdertextBox1.Text;
-            RecordFunctions.InsertRecord(name: name, value: orderValue, "2001-02-12");
-            orderValue = 0;
+            RecordFunctions.InsertRecord(name: name, value: itemQuantity, "2001-02-12");
+            itemQuantity = 0;
             PopulateItems();
         }
         private void Button6_Click(object sender, EventArgs e)
