@@ -35,7 +35,7 @@ namespace SqliteAPI
             throw new Exception("An exception occured: The user you're trying to delete does not exist");
         }
         
-        public static void EditUser(int targetPrimaryKey, string newName, double newRole)
+        public static void EditUser(int targetPrimaryKey, string newName, bool newRole)
         {
             using var cmd = new SQLiteCommand(SqliteAPI.Con);
             cmd.CommandText = "UPDATE tblUser SET " +

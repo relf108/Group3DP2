@@ -18,6 +18,9 @@ namespace SqliteAPI
             //userRole is true for admin false for staff.
             cmd.CommandText = @"CREATE TABLE IF NOT EXISTS tblUser(id INTERGER PRIMARY KEY,
                     userName TEXT, userPassword TEXT, userRole BOOLEAN)";
+            //inventoryTable
+            cmd.CommandText = @"CREATE TABLE IF NOT EXISTS tblInventory(id INTERGER PRIMARY KEY,
+                    itemName TEXT, itemValue DOUBLE )";
         }
     }
 }
