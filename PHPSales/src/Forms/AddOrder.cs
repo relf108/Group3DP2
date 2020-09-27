@@ -11,21 +11,22 @@ namespace PHPSales.Forms
     {
         public int orderValue = 0;
         
-        public void PopulateOrders()
+        
+        //currently modifying this to be a list of items in the inventory
+        public void PopulateItems()
         {
             //Populate the orderlist with sales records in the db
-            BindingList<SaleRecord> orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
+            BindingList<Item> itemList = new BindingList<Item>(InventoryFunctions.listRows());
 
             // Clear OrdersListBox ready for new data
             AddOrderlistBox1.Items.Clear();
 
             //iterate through orderList to format and add items to list box 
-            for (int i = 0; i < orderList.Count; i++)
+            for (int i = 0; i < itemList.Count; i++)
             {
-                ListViewItem tmp = new ListViewItem("Name: " + orderList[i].itemName + " | Price: " + orderList[i].itemValue
-                                                    + " | Sale Date: " + orderList[i].saleDate);   
+                ListViewItem tmp = new ListViewItem("Name: " + itemList[i].name + " | Price: " + itemList[i].value);   
                 //item tagged with its pk in db so that we are not releying on order box index as this will always be wrong after a remove
-                tmp.Tag  = orderList[i].id;
+                tmp.Tag  = itemList[i].id;
                 AddOrderlistBox1.Items.Add(tmp);
             }
 
@@ -33,7 +34,7 @@ namespace PHPSales.Forms
         public AddOrder()
         {
             InitializeComponent();
-            PopulateOrders();
+            PopulateItems();
         }
 
         private void incrementOrderValue(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace PHPSales.Forms
             String name = AddOrdertextBox1.Text;
             RecordFunctions.InsertRecord(name: name, value: orderValue, "2001-02-12");
             orderValue = 0;
-            PopulateOrders();
+            PopulateItems();
         }
         private void Button6_Click(object sender, EventArgs e)
         {
