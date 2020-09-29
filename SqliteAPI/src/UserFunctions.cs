@@ -7,13 +7,14 @@ namespace SqliteAPI
 {
     public class UserFunctions
     {
-        public static void InsertUser(string name, bool role)
+        public static void InsertUser(string name, string password,bool role)
         {
             if (getUserByUsername(name) == null)
             {
                 using var cmd = new SQLiteCommand(SqliteAPI.Con);
-                cmd.CommandText = "INSERT INTO tblUser(userName, userRole) VALUES(@name,@role)";
+                cmd.CommandText = "INSERT INTO tblUser(userName, userPassword ,userRole) VALUES(@name,@password,@role)";
                 cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@password", password);
                 cmd.Parameters.AddWithValue("@role", role);
                 cmd.ExecuteNonQuery();
             }
@@ -35,11 +36,12 @@ namespace SqliteAPI
             throw new Exception("An exception occured: The user you're trying to delete does not exist");
         }
         
-        public static void EditUser(int targetPrimaryKey, string newName, bool newRole)
+        public static void EditUser(int targetPrimaryKey, string newName,string newPass, bool newRole)
         {
             using var cmd = new SQLiteCommand(SqliteAPI.Con);
             cmd.CommandText = "UPDATE tblUser SET " +
                               "userName= '" + newName + "'" +
+                              ", userPassword= '" + newPass + "'" +
                               ", userRole= '" + newRole + "'" +
                               " WHERE id=" + targetPrimaryKey;
             cmd.ExecuteNonQuery();
