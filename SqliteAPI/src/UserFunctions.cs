@@ -30,12 +30,24 @@ namespace SqliteAPI
             if (getUserByUsername(userName) != null)
             {
                 using var cmd = new SQLiteCommand(SqliteAPI.Con);
-                cmd.CommandText = "DELETE FROM tblUser WHERE userName = " + userName;
+                cmd.CommandText = $"DELETE FROM tblUser WHERE userName = \"{userName}\"";
                 cmd.ExecuteNonQuery();
             }
             throw new Exception("An exception occured: The user you're trying to delete does not exist");
         }
-        
+
+        public static void DeleteUser(int id)
+        {
+            if (getUserByID(id) != null)
+            {
+                using var cmd = new SQLiteCommand(SqliteAPI.Con);
+                cmd.CommandText = "DELETE FROM tblUser WHERE id = " + id.ToString();
+                cmd.ExecuteNonQuery();
+            }
+            else
+                throw new Exception("An exception occured: The user you're trying to delete does not exist");
+        }
+
         public static void EditUser(int targetPrimaryKey, string newName,string newPass, bool newRole)
         {
             using var cmd = new SQLiteCommand(SqliteAPI.Con);
@@ -61,11 +73,12 @@ namespace SqliteAPI
 
         public static User getUserByID(int primaryKey)
         {
-            var stm = "SELECT * FROM tblUser WHERE id = " + primaryKey;
+            var stm = "SELECT * FROM tblUser WHERE id = " + primaryKey.ToString();
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
             if (rdr.HasRows)
             {
+                if (rdr.Read())
                 return new User(rdr.GetInt32(0), rdr.GetString(1),rdr.GetString(2), rdr.GetBoolean(3));
             }
 

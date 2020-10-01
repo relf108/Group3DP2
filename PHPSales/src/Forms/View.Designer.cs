@@ -47,30 +47,32 @@ namespace PHPSales.Forms
             // 
             // OrdersListBox
             // 
-            this.OrdersListBox.FormattingEnabled = true;
-            this.OrdersListBox.ItemHeight = 15;
-            this.OrdersListBox.Location = new System.Drawing.Point(65, 43);
-            this.OrdersListBox.Name = "OrdersListBox";
-            this.OrdersListBox.Size = new System.Drawing.Size(332, 349);
-            this.OrdersListBox.TabIndex = 0;
             this.OrdersListBox.DisplayMember = "Text";
+            this.OrdersListBox.FormattingEnabled = true;
+            this.OrdersListBox.ItemHeight = 20;
+            this.OrdersListBox.Location = new System.Drawing.Point(74, 57);
+            this.OrdersListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OrdersListBox.Name = "OrdersListBox";
+            this.OrdersListBox.Size = new System.Drawing.Size(379, 464);
+            this.OrdersListBox.TabIndex = 0;
             this.OrdersListBox.SelectedIndexChanged += new System.EventHandler(this.OrdersListBox_SelectedIndexChanged);
             // 
             // ItemsListBox
             // 
             this.ItemsListBox.FormattingEnabled = true;
-            this.ItemsListBox.ItemHeight = 15;
-            this.ItemsListBox.Location = new System.Drawing.Point(495, 42);
+            this.ItemsListBox.ItemHeight = 20;
+            this.ItemsListBox.Location = new System.Drawing.Point(566, 56);
+            this.ItemsListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(285, 184);
+            this.ItemsListBox.Size = new System.Drawing.Size(325, 244);
             this.ItemsListBox.TabIndex = 1;
             // 
             // DateLabel
             // 
             this.DateLabel.AutoSize = true;
-            this.DateLabel.Location = new System.Drawing.Point(495, 260);
+            this.DateLabel.Location = new System.Drawing.Point(566, 347);
             this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(31, 15);
+            this.DateLabel.Size = new System.Drawing.Size(41, 20);
             this.DateLabel.TabIndex = 2;
             this.DateLabel.Text = "Date";
             this.DateLabel.Click += new System.EventHandler(this.label1_Click);
@@ -78,26 +80,27 @@ namespace PHPSales.Forms
             // EmployeeIDLabel
             // 
             this.EmployeeIDLabel.AutoSize = true;
-            this.EmployeeIDLabel.Location = new System.Drawing.Point(495, 293);
+            this.EmployeeIDLabel.Location = new System.Drawing.Point(566, 391);
             this.EmployeeIDLabel.Name = "EmployeeIDLabel";
-            this.EmployeeIDLabel.Size = new System.Drawing.Size(73, 15);
+            this.EmployeeIDLabel.Size = new System.Drawing.Size(94, 20);
             this.EmployeeIDLabel.TabIndex = 3;
             this.EmployeeIDLabel.Text = "Employee ID";
             // 
             // CoolCustomerLabel
             // 
             this.CoolCustomerLabel.AutoSize = true;
-            this.CoolCustomerLabel.Location = new System.Drawing.Point(495, 328);
+            this.CoolCustomerLabel.Location = new System.Drawing.Point(566, 437);
             this.CoolCustomerLabel.Name = "CoolCustomerLabel";
-            this.CoolCustomerLabel.Size = new System.Drawing.Size(92, 15);
+            this.CoolCustomerLabel.Size = new System.Drawing.Size(114, 20);
             this.CoolCustomerLabel.TabIndex = 4;
             this.CoolCustomerLabel.Text = "Cool Customer?";
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(498, 362);
+            this.BackButton.Location = new System.Drawing.Point(569, 483);
+            this.BackButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(90, 35);
+            this.BackButton.Size = new System.Drawing.Size(103, 47);
             this.BackButton.TabIndex = 5;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
@@ -105,9 +108,10 @@ namespace PHPSales.Forms
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(594, 362);
+            this.EditButton.Location = new System.Drawing.Point(679, 483);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(90, 35);
+            this.EditButton.Size = new System.Drawing.Size(103, 47);
             this.EditButton.TabIndex = 5;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
@@ -115,9 +119,10 @@ namespace PHPSales.Forms
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(690, 362);
+            this.RemoveButton.Location = new System.Drawing.Point(789, 483);
+            this.RemoveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(90, 35);
+            this.RemoveButton.Size = new System.Drawing.Size(103, 47);
             this.RemoveButton.TabIndex = 5;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -126,9 +131,9 @@ namespace PHPSales.Forms
             // Viewlabel4
             // 
             this.Viewlabel4.AutoSize = true;
-            this.Viewlabel4.Location = new System.Drawing.Point(68, 18);
+            this.Viewlabel4.Location = new System.Drawing.Point(78, 24);
             this.Viewlabel4.Name = "Viewlabel4";
-            this.Viewlabel4.Size = new System.Drawing.Size(42, 15);
+            this.Viewlabel4.Size = new System.Drawing.Size(53, 20);
             this.Viewlabel4.TabIndex = 6;
             this.Viewlabel4.Text = "Orders";
             this.Viewlabel4.Click += new System.EventHandler(this.label4_Click);
@@ -136,17 +141,17 @@ namespace PHPSales.Forms
             // Viewlabel5
             // 
             this.Viewlabel5.AutoSize = true;
-            this.Viewlabel5.Location = new System.Drawing.Point(495, 18);
+            this.Viewlabel5.Location = new System.Drawing.Point(566, 24);
             this.Viewlabel5.Name = "Viewlabel5";
-            this.Viewlabel5.Size = new System.Drawing.Size(36, 15);
+            this.Viewlabel5.Size = new System.Drawing.Size(45, 20);
             this.Viewlabel5.TabIndex = 7;
             this.Viewlabel5.Text = "Items";
             // 
             // View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
             this.Controls.Add(this.Viewlabel5);
             this.Controls.Add(this.Viewlabel4);
             this.Controls.Add(this.RemoveButton);
@@ -157,6 +162,7 @@ namespace PHPSales.Forms
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.ItemsListBox);
             this.Controls.Add(this.OrdersListBox);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "View";
             this.Text = "View";
             this.ResumeLayout(false);
