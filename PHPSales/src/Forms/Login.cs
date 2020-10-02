@@ -48,10 +48,5 @@ namespace PHPSales.Forms
             this.Hide();
             viewForm.Show();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -69,7 +69,9 @@ namespace PHPSales.Forms
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            
+            Login login = new Login();
+            login.Show();
+            this.Hide();
             // return controll to loginscreen
         }
     }

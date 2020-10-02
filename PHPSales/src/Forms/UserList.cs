@@ -57,16 +57,19 @@ namespace PHPSales.src.Forms
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            string temp = (UserListBox.SelectedItem as ListViewItem).Tag.ToString();
-            //try
-            //{
-                UserFunctions.DeleteUser(Int32.Parse(temp));
-            /*}
-            catch
-            {
-                MessageBox.Show("Can't remove the user");
-            }*/
-            PopulateItems();
+            //prevent user press remove while selecting nothing or trying to remove admin account
+            if (UserListBox.SelectedIndex > 0) { 
+                string temp = (UserListBox.SelectedItem as ListViewItem).Tag.ToString();
+                try
+                {
+                    UserFunctions.DeleteUser(Int32.Parse(temp));
+                }
+                catch
+                {
+                    MessageBox.Show("Can't remove the user");
+                }
+                PopulateItems();
+            }
         }
     }
 }

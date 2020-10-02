@@ -55,33 +55,41 @@ namespace PHPSales.Forms
         private void RemoveClick(object sender, EventArgs e)
         {
             //Store index to of item to be removed
-            ListViewItem tmp = OrdersListBox.SelectedItem as ListViewItem;
-            int removeIndex = Int32.Parse(tmp.Tag.ToString());
+            if (OrdersListBox.SelectedIndex >=0)
+            {
+                ListViewItem tmp = OrdersListBox.SelectedItem as ListViewItem;
+                int removeIndex = Int32.Parse(tmp.Tag.ToString());
 
-            //Calls into sqlite api to delete record at index
-            RecordFunctions.DeleteRecord(removeIndex);
+                //Calls into sqlite api to delete record at index
+                RecordFunctions.DeleteRecord(removeIndex);
 
-            //Re-populate the list box
-            PopulateOrders();
+                //Re-populate the list box
+                PopulateOrders();
+            }
         }
 
         private void EditClick(object sender, EventArgs e)
         {
-            //Keep selected index for record update and to preserve the highlighted record
-            int boxIndex = OrdersListBox.SelectedIndex;
-            
-            //Determin primary key for the item in the DB
-            ListViewItem tmp = OrdersListBox.SelectedItem as ListViewItem;
-            int editIndex = Int32.Parse(tmp.Tag.ToString());
+            if (OrdersListBox.SelectedIndex >=0)
+            {
+                //Keep selected index for record update and to preserve the highlighted record
+                int boxIndex = OrdersListBox.SelectedIndex;
 
-            //edit the record int the DB
-            RecordFunctions.EditRecord(editIndex, "Test2", 2.5, "2001-02-12");
+                //Determin primary key for the item in the DB
+                ListViewItem tmp = OrdersListBox.SelectedItem as ListViewItem;
+                int editIndex = Int32.Parse(tmp.Tag.ToString());
 
-            //Re-populate the list box
+                //edit the record int the DB
+                EditOrder editorder = new EditOrder(editIndex);
+                editorder.Show();
+
+                //Re-populate the list box
+                editorder.FormClosed += new FormClosedEventHandler(EditDone);
+            }
+        }
+        private void EditDone(object sender, EventArgs e)
+        {
             PopulateOrders();
-
-            //keep previous selected item highlighted
-            OrdersListBox.SelectedIndex = boxIndex;
         }
 
         private void OrdersListBox_SelectedIndexChanged(object sender, EventArgs e)

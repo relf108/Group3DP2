@@ -111,7 +111,6 @@
             this.label1.Size = new System.Drawing.Size(107, 15);
             this.label1.TabIndex = 9;
             this.label1.Text = "For Development...";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Login
             // 
