@@ -16,8 +16,6 @@ namespace PHPSales
         {
             //Example code
             InitDB();
-        //InventoryFunctions.InsertItem("new item", 5.6);
-        RecordFunctions.InsertRecord("record name", 4.7, "2343-33-55");
             RecordFunctions.PrintRows();
             RecordFunctions.exportTable(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "exporteddb");
 

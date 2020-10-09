@@ -10,7 +10,6 @@ namespace SqliteAPI
         public static void InitDB()
         {
             Con.Open();
-            //RecordFunctions.DropTable();
             using var cmd = new SQLiteCommand(Con);
             cmd.CommandText = @"CREATE TABLE IF NOT EXISTS tblRecords(id INTEGER PRIMARY KEY AUTOINCREMENT,
                     itemName TEXT, itemValue DOUBLE , saleDate DATE );";

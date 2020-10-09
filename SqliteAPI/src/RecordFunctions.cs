@@ -108,7 +108,7 @@ namespace SqliteAPI
             catch (UnauthorizedAccessException e)
             {
                 
-                Console.WriteLine("An exception occurredYou do not have sufficient permissions to write to the specified path. " +
+                Console.WriteLine("An exception occurred. You do not have sufficient permissions to write to the specified path. " +
                                   "Try using the path C:\\Users\\YourUsername\\Documents");
                 Console.WriteLine(e.Source);
             }

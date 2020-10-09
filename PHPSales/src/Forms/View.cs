@@ -10,7 +10,26 @@ namespace PHPSales.Forms
 {
     public partial class View : Form
     {
+    
+        public void PopulateItems()
+        {
+            //Populate the orderlist with sales records in the db
+            BindingList<Item> itemList = new BindingList<Item>(InventoryFunctions.listRows());
 
+            // Clear OrdersListBox ready for new data
+            ItemsListBox.Items.Clear();
+
+            //iterate through orderList to format and add items to list box 
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                ListViewItem tmp = new ListViewItem("Name: " + itemList[i].name + " | Price: " + itemList[i].value);   
+                //item tagged with its pk in db so that we are not releying on order box index as this will always be wrong after a remove
+                tmp.Tag  = itemList[i].id;
+                ItemsListBox.Items.Add(tmp);
+            }
+
+        }
+        
         public void PopulateOrders()
         {
             //Populate the orderlist with sales records in the db
@@ -35,6 +54,8 @@ namespace PHPSales.Forms
         {
             InitializeComponent();
             PopulateOrders();
+            PopulateItems();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

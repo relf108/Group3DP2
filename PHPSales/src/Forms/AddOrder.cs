@@ -26,7 +26,7 @@ namespace PHPSales.Forms
             {
                 ListViewItem tmp = new ListViewItem("Name: " + itemList[i].name + " | Price: " + itemList[i].value);   
                 //item tagged with its pk in db so that we are not releying on order box index as this will always be wrong after a remove
-                tmp.Tag  = itemList[i].id;
+                tmp.Tag  = itemList[i].id.ToString();
                 AddOrderlistBox1.Items.Add(tmp);
             }
 
@@ -37,31 +37,18 @@ namespace PHPSales.Forms
             PopulateItems();
         }
 
-        private void IncrementItemQuantity(object sender, EventArgs e)
-        {
-            itemQuantity++;
-        }
-
-        private void DecrementItemQuantity(object sender, EventArgs e)
-        {
-            itemQuantity--;
-        }
-
         private void AddItem(object sender, EventArgs e)
         {
-            String name = AddOrdertextBox1.Text;
-            RecordFunctions.InsertRecord(name: name, value: itemQuantity, "2001-02-12");
+            ListViewItem tmp = AddOrderlistBox1.SelectedItem as ListViewItem;
+            int itemIndex = Int32.Parse(tmp.Tag.ToString());
+            
+            RecordFunctions.InsertRecord(name: InventoryFunctions.getItemByID(itemIndex).name, value: InventoryFunctions.getItemByID(itemIndex).value, "2001-02-12");
             itemQuantity = 0;
             PopulateItems();
         }
         private void Button6_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

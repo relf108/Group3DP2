@@ -85,15 +85,24 @@ namespace SqliteAPI
         
         public static Item getItemByName(string itemName)
         {
-            var stm = $"SELECT * FROM tblInventory WHERE itemName = \"{itemName}\"";
+            var stm = "SELECT * FROM tblInventory WHERE itemName =" + "\"" + itemName + "\"";
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
             if (rdr.HasRows)
             {
+                rdr.Read();
                 return new Item(rdr.GetInt32(0), rdr.GetString(1),rdr.GetDouble(2));
             }
             return null;
             }
+        
+        public static void DropTable()
+        {
+            //would be used for db rollover if we get to that.
+            using var cmd = new SQLiteCommand(SqliteAPI.Con);
+            cmd.CommandText = "DROP TABLE IF EXISTS tblInventory";
+            cmd.ExecuteNonQuery();
+        }
         
     }
 }

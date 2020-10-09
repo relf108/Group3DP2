@@ -74,5 +74,11 @@ namespace PHPSales.Forms
             this.Hide();
             // return controll to loginscreen
         }
+
+        private void exportRecords_Click(object sender, EventArgs e)
+        {
+            Export export = new Export();
+            export.Show();
+        }
     }
 }

@@ -10,4 +10,10 @@
     <ProjectReference Include="..\SqliteAPI\SqliteAPI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="src\Forms\Export.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
