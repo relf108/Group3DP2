@@ -19,22 +19,34 @@ namespace SqliteAPI
             }
             else
             {
-                throw new Exception("An exception occured: That username is already taken");
+                throw new Exception("An exception occured: That item name is already taken");
             }
             
         }
 
-        public static void DeleteUser(string itemName)
+        public static void DeleteItem(string itemName)
         {
             if (getItemByName(itemName) != null)
             {
                 using var cmd = new SQLiteCommand(SqliteAPI.Con);
-                cmd.CommandText = "DELETE FROM tblItem WHERE itemName = " + itemName;
+                cmd.CommandText = "DELETE FROM tblInventory WHERE itemName = " + itemName;
                 cmd.ExecuteNonQuery();
             }
-            throw new Exception("An exception occured: The user you're trying to delete does not exist");
+            throw new Exception("An exception occured: The item you're trying to delete does not exist");
         }
-        
+
+        public static void DeleteItem(int id)
+        {
+            if (getItemByID(id) != null)
+            {
+                using var cmd = new SQLiteCommand(SqliteAPI.Con);
+                cmd.CommandText = "DELETE FROM tblInventory WHERE id = " + id.ToString();
+                cmd.ExecuteNonQuery();
+            }
+            else
+                throw new Exception("An exception occured: The item you're trying to delete does not exist");
+        }
+
         public static void EditItem(int targetPrimaryKey, string newName, double newValue)
         {
             using var cmd = new SQLiteCommand(SqliteAPI.Con);
@@ -53,7 +65,7 @@ namespace SqliteAPI
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
             while (rdr.Read())
-                list.Add(new Item(1, rdr.GetString(1), rdr.GetDouble(2)));
+                list.Add(new Item(rdr.GetInt32(0), rdr.GetString(1), rdr.GetDouble(2)));
             return list;
         }
 
@@ -64,26 +76,24 @@ namespace SqliteAPI
             using var rdr = readercmd.ExecuteReader();
             if (rdr.HasRows)
             {
+                rdr.Read();
                 return new Item(rdr.GetInt32(0), rdr.GetString(1),rdr.GetDouble(2));
             }
 
             return null;
         }
         
-        public static Item getItemByName(string name)
+        public static Item getItemByName(string itemName)
         {
-            var stm = "SELECT * FROM tblInventory WHERE itemName = " + "'" + name + "'";
+            var stm = $"SELECT * FROM tblInventory WHERE itemName = \"{itemName}\"";
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
-            if(rdr.HasRows)
+            if (rdr.HasRows)
             {
                 return new Item(rdr.GetInt32(0), rdr.GetString(1),rdr.GetDouble(2));
             }
-            else
-            {
-                return null;
+            return null;
             }
-        }
         
     }
 }
