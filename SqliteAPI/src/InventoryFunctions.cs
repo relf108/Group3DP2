@@ -53,7 +53,7 @@ namespace SqliteAPI
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
             while (rdr.Read())
-                list.Add(new Item(rdr.GetInt32(0), rdr.GetString(1), rdr.GetDouble(2)));
+                list.Add(new Item(1, rdr.GetString(1), rdr.GetDouble(2)));
             return list;
         }
 
@@ -70,17 +70,20 @@ namespace SqliteAPI
             return null;
         }
         
-        public static Item getItemByName(string itemName)
+        public static Item getItemByName(string name)
         {
-            var stm = "SELECT * FROM tblInventory WHERE itemName = " + itemName;
+            var stm = "SELECT * FROM tblInventory WHERE itemName = " + "'" + name + "'";
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
-            if (rdr.HasRows)
+            if(rdr.HasRows)
             {
                 return new Item(rdr.GetInt32(0), rdr.GetString(1),rdr.GetDouble(2));
             }
-            return null;
+            else
+            {
+                return null;
             }
+        }
         
     }
 }
