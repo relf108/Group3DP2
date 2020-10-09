@@ -51,7 +51,7 @@ namespace PHPSales.src.Forms
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            if (ItemListBox.SelectedIndex > 0)
+            if (ItemListBox.SelectedIndex >= 0)
             {
                 string temp = (ItemListBox.SelectedItem as ListViewItem).Tag.ToString();
                 try
