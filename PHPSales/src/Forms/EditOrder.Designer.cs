@@ -28,21 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.DoneButton = new System.Windows.Forms.Button();
+            this.itemComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(139, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
@@ -95,18 +88,27 @@
             this.DoneButton.UseVisualStyleBackColor = true;
             this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
             // 
+            // itemComboBox
+            // 
+            this.itemComboBox.FormattingEnabled = true;
+            this.itemComboBox.Location = new System.Drawing.Point(139, 45);
+            this.itemComboBox.Name = "itemComboBox";
+            this.itemComboBox.Size = new System.Drawing.Size(125, 28);
+            this.itemComboBox.TabIndex = 7;
+            this.itemComboBox.SelectedIndexChanged += new System.EventHandler(this.itemComboBox_SelectedIndexChanged);
+            // 
             // EditOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 214);
+            this.Controls.Add(this.itemComboBox);
             this.Controls.Add(this.DoneButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Name = "EditOrder";
             this.Text = "EditOrder";
             this.ResumeLayout(false);
@@ -115,13 +117,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button DoneButton;
+        private System.Windows.Forms.ComboBox itemComboBox;
     }
 }

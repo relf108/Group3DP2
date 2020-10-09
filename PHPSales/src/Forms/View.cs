@@ -90,9 +90,10 @@ namespace PHPSales.Forms
                 //Determin primary key for the item in the DB
                 ListViewItem tmp = OrdersListBox.SelectedItem as ListViewItem;
                 int editIndex = Int32.Parse(tmp.Tag.ToString());
+                string editDate = RecordFunctions.getRecordByID(editIndex).saleDate;
 
                 //edit the record int the DB
-                EditOrder editorder = new EditOrder(editIndex);
+                EditOrder editorder = new EditOrder(editIndex,editDate);
                 editorder.Show();
 
                 //Re-populate the list box

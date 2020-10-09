@@ -88,6 +88,7 @@ namespace SqliteAPI
             var stm = "SELECT * FROM tblRecords WHERE id = " + primaryKey;
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
+            rdr.Read();
             return new SaleRecord(rdr.GetInt32(0),rdr.GetInt32(1), rdr.GetString(2), rdr.GetDouble(3), rdr.GetString(4));
         }
         public static void exportTable(string path, string filename)
