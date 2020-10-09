@@ -47,10 +47,11 @@ namespace PHPSales.Forms
             // 
             this.OrdersListBox.DisplayMember = "Text";
             this.OrdersListBox.FormattingEnabled = true;
-            this.OrdersListBox.Location = new System.Drawing.Point(56, 37);
-            this.OrdersListBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.OrdersListBox.ItemHeight = 20;
+            this.OrdersListBox.Location = new System.Drawing.Point(12, 57);
+            this.OrdersListBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.OrdersListBox.Name = "OrdersListBox";
-            this.OrdersListBox.Size = new System.Drawing.Size(285, 303);
+            this.OrdersListBox.Size = new System.Drawing.Size(534, 464);
             this.OrdersListBox.TabIndex = 0;
             this.OrdersListBox.SelectedIndexChanged += new System.EventHandler(this.OrdersListBox_SelectedIndexChanged);
             // 
@@ -58,18 +59,19 @@ namespace PHPSales.Forms
             // 
             this.ItemsListBox.DisplayMember = "Text";
             this.ItemsListBox.FormattingEnabled = true;
-            this.ItemsListBox.Location = new System.Drawing.Point(424, 36);
-            this.ItemsListBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ItemsListBox.ItemHeight = 20;
+            this.ItemsListBox.Location = new System.Drawing.Point(565, 55);
+            this.ItemsListBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ItemsListBox.Name = "ItemsListBox";
-            this.ItemsListBox.Size = new System.Drawing.Size(245, 251);
+            this.ItemsListBox.Size = new System.Drawing.Size(325, 384);
             this.ItemsListBox.TabIndex = 1;
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(427, 314);
-            this.BackButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BackButton.Location = new System.Drawing.Point(569, 483);
+            this.BackButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(77, 31);
+            this.BackButton.Size = new System.Drawing.Size(103, 48);
             this.BackButton.TabIndex = 5;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
@@ -77,10 +79,10 @@ namespace PHPSales.Forms
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(509, 314);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.EditButton.Location = new System.Drawing.Point(679, 483);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(77, 31);
+            this.EditButton.Size = new System.Drawing.Size(103, 48);
             this.EditButton.TabIndex = 5;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
@@ -88,10 +90,10 @@ namespace PHPSales.Forms
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(592, 314);
-            this.RemoveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.RemoveButton.Location = new System.Drawing.Point(789, 483);
+            this.RemoveButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(77, 31);
+            this.RemoveButton.Size = new System.Drawing.Size(103, 48);
             this.RemoveButton.TabIndex = 5;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -100,29 +102,26 @@ namespace PHPSales.Forms
             // Viewlabel4
             // 
             this.Viewlabel4.AutoSize = true;
-            this.Viewlabel4.Location = new System.Drawing.Point(58, 16);
-            this.Viewlabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Viewlabel4.Location = new System.Drawing.Point(12, 25);
             this.Viewlabel4.Name = "Viewlabel4";
-            this.Viewlabel4.Size = new System.Drawing.Size(38, 13);
+            this.Viewlabel4.Size = new System.Drawing.Size(53, 20);
             this.Viewlabel4.TabIndex = 6;
             this.Viewlabel4.Text = "Orders";
-            this.Viewlabel4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Viewlabel5
             // 
             this.Viewlabel5.AutoSize = true;
-            this.Viewlabel5.Location = new System.Drawing.Point(424, 16);
-            this.Viewlabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Viewlabel5.Location = new System.Drawing.Point(565, 25);
             this.Viewlabel5.Name = "Viewlabel5";
-            this.Viewlabel5.Size = new System.Drawing.Size(32, 13);
+            this.Viewlabel5.Size = new System.Drawing.Size(45, 20);
             this.Viewlabel5.TabIndex = 7;
             this.Viewlabel5.Text = "Items";
             // 
             // View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 390);
+            this.ClientSize = new System.Drawing.Size(915, 600);
             this.Controls.Add(this.Viewlabel5);
             this.Controls.Add(this.Viewlabel4);
             this.Controls.Add(this.RemoveButton);
@@ -130,11 +129,12 @@ namespace PHPSales.Forms
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.ItemsListBox);
             this.Controls.Add(this.OrdersListBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "View";
             this.Text = "View";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

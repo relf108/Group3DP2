@@ -11,7 +11,7 @@ namespace SqliteAPI
         {
             Con.Open();
             using var cmd = new SQLiteCommand(Con);
-            cmd.CommandText = @"CREATE TABLE IF NOT EXISTS tblRecords(id INTEGER PRIMARY KEY AUTOINCREMENT,
+            cmd.CommandText = @"CREATE TABLE IF NOT EXISTS tblRecords(id INTEGER PRIMARY KEY AUTOINCREMENT, orderID INTEGER,
                     itemName TEXT, itemValue DOUBLE , saleDate DATE );";
             cmd.ExecuteNonQuery();
             //userRole is true for admin false for staff.

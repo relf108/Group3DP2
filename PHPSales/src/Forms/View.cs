@@ -41,7 +41,8 @@ namespace PHPSales.Forms
             //iterate through orderList to format and add items to list box 
             for (int i = 0; i < orderList.Count; i++)
             {
-                ListViewItem tmp = new ListViewItem(    "Name: " + orderList[i].itemName + " | " +
+                ListViewItem tmp = new ListViewItem(    "Order number: " + orderList[i].orderID + " | " + 
+                                                        "Name: " + orderList[i].itemName + " | " +
                                                         "Price: " + orderList[i].itemValue + " | " +
                                                         "Sale Date: " + orderList[i].saleDate);   
                 //item tagged with its pk in db so that we are not releying on order box index as this will always be wrong after a remove
@@ -56,16 +57,6 @@ namespace PHPSales.Forms
             PopulateOrders();
             PopulateItems();
             
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Viewbutton1_Click(object sender, EventArgs e)

@@ -10,10 +10,11 @@ namespace SqliteAPI
 {
     public class RecordFunctions
     {
-        public static void InsertRecord(string name, double value, string date)
+        public static void InsertRecord(int orderid, string name, double value, string date)
         {
             using var cmd = new SQLiteCommand(SqliteAPI.Con);
-            cmd.CommandText = "INSERT INTO tblRecords(itemName, itemValue, saleDate) VALUES(@name,@value,@date)";
+            cmd.CommandText = "INSERT INTO tblRecords(orderID, itemName, itemValue, saleDate) VALUES(@orderID,@name,@value,@date)";
+            cmd.Parameters.AddWithValue("@orderID", orderid);
             cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@value", value);
             cmd.Parameters.AddWithValue("@date", date);
@@ -36,8 +37,8 @@ namespace SqliteAPI
             while (rdr.Read())
             {
                 SaleRecord record;
-                record = new SaleRecord(rdr.GetInt32(0), rdr.GetString(1),
-                    rdr.GetDouble(2), rdr.GetString(3));
+                record = new SaleRecord(rdr.GetInt32(0),rdr.GetInt32(1), rdr.GetString(2),
+                    rdr.GetDouble(3), rdr.GetString(4));
                 recordsArray.Add(record);
             }
             SaleRecord[] records = new SaleRecord[recordsArray.Count];
@@ -67,7 +68,7 @@ namespace SqliteAPI
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
             while (rdr.Read())
-                Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetDouble(2)} {rdr.GetString(3)}");
+                Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetInt32(1)} {rdr.GetString(2)} {rdr.GetDouble(3)} {rdr.GetString(4)}");
         }
 
         public static List<SaleRecord> listRows()
@@ -77,8 +78,8 @@ namespace SqliteAPI
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
             while (rdr.Read())
-                list.Add(new SaleRecord(rdr.GetInt32(0), rdr.GetString(1),
-                    rdr.GetDouble(2), rdr.GetString(3)));
+                list.Add(new SaleRecord(rdr.GetInt32(0),rdr.GetInt32(1) ,rdr.GetString(2),
+                    rdr.GetDouble(3), rdr.GetString(4)));
             return list;
         }
 
@@ -87,7 +88,7 @@ namespace SqliteAPI
             var stm = "SELECT * FROM tblRecords WHERE id = " + primaryKey;
             using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
             using var rdr = readercmd.ExecuteReader();
-            return new SaleRecord(rdr.GetInt32(0), rdr.GetString(1), rdr.GetDouble(2), rdr.GetString(3));
+            return new SaleRecord(rdr.GetInt32(0),rdr.GetInt32(1), rdr.GetString(2), rdr.GetDouble(3), rdr.GetString(4));
         }
         public static void exportTable(string path, string filename)
         {
@@ -112,6 +113,15 @@ namespace SqliteAPI
                                   "Try using the path C:\\Users\\YourUsername\\Documents");
                 Console.WriteLine(e.Source);
             }
+        }
+
+        public static int getOrderID()
+        {
+            var stm = "SELECT * FROM tblRecords ORDER BY id DESC";
+            using var readercmd = new SQLiteCommand(stm, SqliteAPI.Con);
+            using var rdr = readercmd.ExecuteReader();
+            rdr.Read();
+            return rdr.GetInt32(1);
         }
 
         public static void DropTable()

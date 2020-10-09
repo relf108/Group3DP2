@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using SqliteAPI;
@@ -10,7 +12,7 @@ namespace PHPSales.Forms
     public partial class AddOrder : Form
     {
         public int itemQuantity = 0;
-        
+        public List<Item> curOrder = new List<Item>();
         
         //currently modifying this to be a list of items in the inventory
         public void PopulateItems()
@@ -19,7 +21,7 @@ namespace PHPSales.Forms
             BindingList<Item> itemList = new BindingList<Item>(InventoryFunctions.listRows());
 
             // Clear OrdersListBox ready for new data
-            AddOrderlistBox1.Items.Clear();
+            ItemListBox.Items.Clear();
 
             //iterate through orderList to format and add items to list box 
             for (int i = 0; i < itemList.Count; i++)
@@ -27,28 +29,75 @@ namespace PHPSales.Forms
                 ListViewItem tmp = new ListViewItem("Name: " + itemList[i].name + " | Price: " + itemList[i].value);   
                 //item tagged with its pk in db so that we are not releying on order box index as this will always be wrong after a remove
                 tmp.Tag  = itemList[i].id.ToString();
-                AddOrderlistBox1.Items.Add(tmp);
+                ItemListBox.Items.Add(tmp);
             }
 
+        }
+        public void PopulateOrder()
+        {
+            double total = 0;
+            CurrentOrderListBox.Items.Clear();
+            for (int i = 0; i < curOrder.Count; i++)
+            {
+                ListViewItem tmp1 = new ListViewItem("Name: " + curOrder[i].name + " | Price: " + curOrder[i].value);
+                total += curOrder[i].value;
+                tmp1.Tag = curOrder[i].id.ToString();
+                CurrentOrderListBox.Items.Add(tmp1);
+            }
+            ListViewItem tmp = new ListViewItem("Total: "+total.ToString());
+            CurrentOrderListBox.Items.Add(tmp);
         }
         public AddOrder()
         {
             InitializeComponent();
             PopulateItems();
+            PopulateOrder();
         }
 
-        private void AddItem(object sender, EventArgs e)
+        private void AddCurOrder(object sender, EventArgs e)
         {
-            ListViewItem tmp = AddOrderlistBox1.SelectedItem as ListViewItem;
-            int itemIndex = Int32.Parse(tmp.Tag.ToString());
-            
-            RecordFunctions.InsertRecord(name: InventoryFunctions.getItemByID(itemIndex).name, value: InventoryFunctions.getItemByID(itemIndex).value, "2001-02-12");
-            itemQuantity = 0;
-            PopulateItems();
+            if (curOrder.Count > 0)
+            {
+                int orderid = RecordFunctions.getOrderID() + 1;
+                for (int i = 0; i < curOrder.Count; i++)
+                {
+                    RecordFunctions.InsertRecord(orderid,curOrder[i].name ,curOrder[i].value, DateTime.Now.ToString());
+                }
+                curOrder = new List<Item>();
+                PopulateOrder();
+            }
+            else
+            {
+                MessageBox.Show("No item selected");
+            }    
         }
         private void Button6_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            if (ItemListBox.SelectedIndex >= 0)
+            {
+                string tmp = (ItemListBox.SelectedItem as ListViewItem).Tag.ToString();
+                int itemIndex = Int32.Parse(tmp);
+                curOrder.Add(InventoryFunctions.getItemByID(itemIndex));
+            }
+            PopulateOrder();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentOrderListBox.SelectedIndex >= 0)
+            {
+                curOrder.Remove(curOrder[CurrentOrderListBox.SelectedIndex]);
+                PopulateOrder();
+            }
+            else
+            {
+                MessageBox.Show("No item in current order list selected");
+            }
         }
     }
 }
