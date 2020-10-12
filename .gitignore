@@ -1,10 +1,11 @@
 
 .vs
 .idea
+*.sln
 
 # Binaries
 bin/
 obj/
 
 # User files
-#*.user
+*.user
