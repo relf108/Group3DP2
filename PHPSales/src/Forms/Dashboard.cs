@@ -5,15 +5,14 @@ using System.Windows.Forms;
 namespace PHPSales.Forms
 {
 
-    public partial class Form1 : Form
+    public partial class Dashboard : Form
     {
-
-        public Form1()
+        public Dashboard()
         {
             InitializeComponent();
         }
 
-        public Form1(bool userLevel)
+        public Dashboard(bool userLevel)
         {
             InitializeComponent();
             if (userLevel == true)
@@ -48,11 +47,6 @@ namespace PHPSales.Forms
         private void button3_Click(object sender, EventArgs e)
         {
             
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button3_Click_1(object sender, EventArgs e)

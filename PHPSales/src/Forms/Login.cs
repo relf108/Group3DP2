@@ -1,16 +1,13 @@
 ﻿using SqliteAPI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PHPSales.Forms
 {
+
     public partial class Login : Form
     {
+
         public Login()
         {
             InitializeComponent();
@@ -18,12 +15,11 @@ namespace PHPSales.Forms
 
         private void LoginButton_Click_1(object sender, EventArgs e)
         {
-
-            bool UserLvl;
-            try 
+            bool userLvl;
+            try
             {
-                UserLvl = UserFunctions.authUser(UsernameTextBox.Text.ToString(), PasswordTextBox.Text.ToString());
-                Form1 viewForm = new Form1(UserLvl);
+                userLvl = UserFunctions.authUser(UsernameTextBox.Text.ToString(), PasswordTextBox.Text.ToString());
+                Dashboard viewForm = new Dashboard(userLvl);
                 this.Hide();
                 viewForm.Show();
             }
@@ -31,22 +27,22 @@ namespace PHPSales.Forms
             {
                 MessageBox.Show("failed to login");
             }
-
-
         }
 
         private void Bypass_Click(object sender, EventArgs e)
         {
-            Form1 viewForm = new Form1(false);
+            Dashboard viewForm = new Dashboard(false);
             this.Hide();
             viewForm.Show();
         }
 
         private void AdminBypass_Click(object sender, EventArgs e)
         {
-            Form1 viewForm = new Form1(true);
+            Dashboard viewForm = new Dashboard(true);
             this.Hide();
             viewForm.Show();
         }
+
     }
+
 }
