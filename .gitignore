@@ -1,5 +1,10 @@
+
 .vs
 .idea
+
+# Binaries
 bin/
-PHPSales/obj/
-SqliteAPI/obj/
+obj/
+
+# User files
+#*.user
