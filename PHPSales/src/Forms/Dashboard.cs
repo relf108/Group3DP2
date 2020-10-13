@@ -1,5 +1,4 @@
-﻿using PHPSales.src.Forms;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace PHPSales.Forms
@@ -63,10 +62,7 @@ namespace PHPSales.Forms
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
-            // return controll to loginscreen
+            PHPApplication.instance.LoadForm(new Login());
         }
 
         private void exportRecords_Click(object sender, EventArgs e)

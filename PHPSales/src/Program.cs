@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Forms;
-using PHPSales.Forms;
 using SqliteAPI;
 using static SqliteAPI.SqliteAPI;
 
@@ -9,7 +8,7 @@ namespace PHPSales
     internal static class Program
     {
         /// <summary>
-        ///     The main entry point for the application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         private static void Main()
@@ -21,7 +20,8 @@ namespace PHPSales
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new PHPApplication());
+
         }
     }
 }

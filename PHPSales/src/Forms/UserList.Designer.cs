@@ -1,4 +1,4 @@
-﻿namespace PHPSales.src.Forms
+﻿namespace PHPSales.Forms
 {
     partial class UserList
     {

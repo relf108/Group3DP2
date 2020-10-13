@@ -1,5 +1,6 @@
 ﻿using SqliteAPI;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PHPSales.Forms
@@ -15,34 +16,36 @@ namespace PHPSales.Forms
 
         private void LoginButton_Click_1(object sender, EventArgs e)
         {
-            bool userLvl;
             try
             {
-                userLvl = UserFunctions.authUser(UsernameTextBox.Text.ToString(), PasswordTextBox.Text.ToString());
-                Dashboard viewForm = new Dashboard(userLvl);
-                this.Hide();
-                viewForm.Show();
+                bool userLvl = UserFunctions.authUser(UsernameTextBox.Text.ToString(), PasswordTextBox.Text.ToString());
+                PHPApplication.instance.LoadForm(new Dashboard(userLvl));
             }
             catch
             {
-                MessageBox.Show("failed to login");
+                MessageBox.Show("Failed to login!");
             }
         }
 
         private void Bypass_Click(object sender, EventArgs e)
         {
-            Dashboard viewForm = new Dashboard(false);
-            this.Hide();
-            viewForm.Show();
+            PHPApplication.instance.LoadForm(new Dashboard(false));
         }
 
         private void AdminBypass_Click(object sender, EventArgs e)
         {
-            Dashboard viewForm = new Dashboard(true);
-            this.Hide();
-            viewForm.Show();
+            PHPApplication.instance.LoadForm(new Dashboard(true));
         }
 
+        private void buttonLogin_MouseEnter(object sender, EventArgs e)
+        {
+            buttonLogin.ForeColor = Color.White;
+        }
+
+        private void buttonLogin_MouseLeave(object sender, EventArgs e)
+        {
+            buttonLogin.ForeColor = Color.Black;
+        }
     }
 
 }

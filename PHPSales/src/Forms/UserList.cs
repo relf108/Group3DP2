@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using SqliteAPI.Objects;
 using SqliteAPI;
 
-namespace PHPSales.src.Forms
+namespace PHPSales.Forms
 {
     public partial class UserList : Form
     {
