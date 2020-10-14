@@ -104,11 +104,18 @@ namespace SqliteAPI
         public static bool authUser(string userName, string userPassword)
         {
             var temp = getUserByUsername(userName);
-            if (temp.userPassword.Equals(userPassword))
+            if (temp != null)
             {
-                return temp.userRole;
+                if (temp.userPassword.Equals(userPassword))
+                {
+                    return temp.userRole;
+                }
+                throw new Exception("An exception occured: The user does not exist or the username and password do not match");
             }
-            throw new Exception("An exception occured: The user does not exist or the username and password do not match");
+            else
+            {
+                throw new Exception("An exception occured: The user does not exist or the username and password do not match");
+            }
         }
     }
 }
