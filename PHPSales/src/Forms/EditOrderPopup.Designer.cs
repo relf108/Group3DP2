@@ -1,6 +1,6 @@
 ﻿namespace PHPSales.Forms
 {
-    partial class EditOrder
+    partial class EditOrderPopup
     {
         /// <summary>
         /// Required designer variable.

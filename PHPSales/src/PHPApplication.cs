@@ -10,14 +10,16 @@ namespace PHPSales
     class PHPApplication : ApplicationContext
     {
 
-        public static PHPApplication instance;
-
         private Form currentForm;
+
+        public static PHPApplication Instance { get; private set; }
+        public bool IsAdmin { get; set; }
 
         public PHPApplication()
         {
-            instance = this;
-            LoadForm(new Login());
+            if (Instance != null) return;
+            Instance = this;
+            LoadForm(new LoginForm());
         }
         
         /// Closes the current open form and opens the new specified form
@@ -38,6 +40,7 @@ namespace PHPSales
         {
             ExitThread();
         }
+
     }
 
 }

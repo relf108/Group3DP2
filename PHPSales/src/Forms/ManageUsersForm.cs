@@ -1,17 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using SqliteAPI.Objects;
 using SqliteAPI;
 
 namespace PHPSales.Forms
 {
-    public partial class UserList : Form
+
+    public partial class ManageUsersForm : Form
     {
+
+        public ManageUsersForm()
+        {
+            InitializeComponent();
+            PopulateItems();
+        }
+
         public void PopulateItems()
         {
             //Populate the orderlist with sales records in the db
@@ -31,15 +35,10 @@ namespace PHPSales.Forms
             }
 
         }
-        public UserList()
-        {
-            InitializeComponent();
-            PopulateItems();
-        }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.LoadForm(new DashboardForm());
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -71,5 +70,7 @@ namespace PHPSales.Forms
                 PopulateItems();
             }
         }
+
     }
+
 }

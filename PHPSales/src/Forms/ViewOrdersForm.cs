@@ -1,17 +1,23 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 using SqliteAPI;
 using SqliteAPI.Objects;
 
 namespace PHPSales.Forms
 {
-    public partial class View : Form
+
+    public partial class ViewOrdersForm : Form
     {
-    
-        public void PopulateItems()
+
+        public ViewOrdersForm()
+        {
+            InitializeComponent();
+            PopulateOrders();
+            PopulateItems();
+        }
+
+        private void PopulateItems()
         {
             //Populate the orderlist with sales records in the db
             BindingList<Item> itemList = new BindingList<Item>(InventoryFunctions.listRows());
@@ -22,15 +28,14 @@ namespace PHPSales.Forms
             //iterate through orderList to format and add items to list box 
             for (int i = 0; i < itemList.Count; i++)
             {
-                ListViewItem tmp = new ListViewItem("Name: " + itemList[i].name + " | Price: " + itemList[i].value);   
+                ListViewItem tmp = new ListViewItem("Name: " + itemList[i].name + " | Price: " + itemList[i].value);
                 //item tagged with its pk in db so that we are not releying on order box index as this will always be wrong after a remove
-                tmp.Tag  = itemList[i].id;
+                tmp.Tag = itemList[i].id;
                 ItemsListBox.Items.Add(tmp);
             }
-
         }
-        
-        public void PopulateOrders()
+
+        private void PopulateOrders()
         {
             //Populate the orderlist with sales records in the db
             BindingList<SaleRecord> orderList = new BindingList<SaleRecord>(RecordFunctions.GetRecords());
@@ -41,30 +46,22 @@ namespace PHPSales.Forms
             //iterate through orderList to format and add items to list box 
             for (int i = 0; i < orderList.Count; i++)
             {
-                ListViewItem tmp = new ListViewItem(    "Order number: " + orderList[i].orderID + " | " + 
+                ListViewItem tmp = new ListViewItem("Order number: " + orderList[i].orderID + " | " +
                                                         "Name: " + orderList[i].itemName + " | " +
                                                         "Price: " + orderList[i].itemValue + " | " +
-                                                        "Sale Date: " + orderList[i].saleDate);   
+                                                        "Sale Date: " + orderList[i].saleDate);
                 //item tagged with its pk in db so that we are not releying on order box index as this will always be wrong after a remove
-                tmp.Tag  = orderList[i].id;
+                tmp.Tag = orderList[i].id;
                 OrdersListBox.Items.Add(tmp);
             }
-
         }
-        public View()
+
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            PopulateOrders();
-            PopulateItems();
-            
+            this.LoadForm(new DashboardForm());
         }
 
-        private void Viewbutton1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void RemoveClick(object sender, EventArgs e)
+        private void btnRemove_Click(object sender, EventArgs e)
         {
             //Store index to of item to be removed
             if (OrdersListBox.SelectedIndex >=0)
@@ -80,9 +77,9 @@ namespace PHPSales.Forms
             }
         }
 
-        private void EditClick(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (OrdersListBox.SelectedIndex >=0)
+            if (OrdersListBox.SelectedIndex >= 0)
             {
                 //Keep selected index for record update and to preserve the highlighted record
                 int boxIndex = OrdersListBox.SelectedIndex;
@@ -93,13 +90,14 @@ namespace PHPSales.Forms
                 string editDate = RecordFunctions.getRecordByID(editIndex).saleDate;
 
                 //edit the record int the DB
-                EditOrder editorder = new EditOrder(editIndex,editDate);
+                EditOrderPopup editorder = new EditOrderPopup(editIndex,editDate);
                 editorder.Show();
 
                 //Re-populate the list box
                 editorder.FormClosed += new FormClosedEventHandler(EditDone);
             }
         }
+
         private void EditDone(object sender, EventArgs e)
         {
             PopulateOrders();
@@ -109,5 +107,7 @@ namespace PHPSales.Forms
         {
 
         }
+
     }
+
 }

@@ -6,10 +6,10 @@ using System.Windows.Forms;
 namespace PHPSales.Forms
 {
 
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
 
-        public Login()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -17,36 +17,32 @@ namespace PHPSales.Forms
         private void btnLogin_Click(object sender, EventArgs e)
         {
             lblWrongLogin.Visible = false;
-            lblEmptyUsername.Visible = false;
-            lblEmptyPassword.Visible = false;
-
-            if (tbxUsername.Text == "" || tbxPassword.Text == "")
-            {
-                lblEmptyUsername.Visible = (tbxUsername.Text == "");
-                lblEmptyPassword.Visible = (tbxPassword.Text == "");
-                return;
-            } 
+            lblEmptyUsername.Visible = (tbxUsername.Text == "");
+            lblEmptyPassword.Visible = (tbxPassword.Text == "");
+            if (tbxUsername.Text == "" || tbxPassword.Text == "") return;
 
             try
             {
-                bool userLvl = UserFunctions.authUser(tbxUsername.Text.ToString(), tbxPassword.Text.ToString());
-                PHPApplication.instance.LoadForm(new Dashboard(userLvl));
+                bool isAdmin = UserFunctions.authUser(tbxUsername.Text.ToString(), tbxPassword.Text.ToString());
+                PHPApplication.Instance.IsAdmin = isAdmin;
+                this.LoadForm(new DashboardForm());
             }
             catch
             {
                 lblWrongLogin.Visible = true;
-                //MessageBox.Show("Failed to login!");
             }
         }
 
         private void btnUserBypass_Click(object sender, EventArgs e)
         {
-            PHPApplication.instance.LoadForm(new Dashboard(false));
+            PHPApplication.Instance.IsAdmin = false;
+            this.LoadForm(new DashboardForm());
         }
 
         private void btnAdminBypass_Click(object sender, EventArgs e)
         {
-            PHPApplication.instance.LoadForm(new Dashboard(true));
+            PHPApplication.Instance.IsAdmin = true;
+            this.LoadForm(new DashboardForm());
         }
 
         private void btnLogin_MouseEnter(object sender, EventArgs e)

@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -9,11 +8,20 @@ using SqliteAPI.Objects;
 
 namespace PHPSales.Forms
 {
-    public partial class AddOrder : Form
+
+    public partial class AddOrderForm : Form
     {
+
         public int itemQuantity = 0;
         public List<Item> curOrder = new List<Item>();
-        
+
+        public AddOrderForm()
+        {
+            InitializeComponent();
+            PopulateItems();
+            PopulateOrder();
+        }
+
         //currently modifying this to be a list of items in the inventory
         public void PopulateItems()
         {
@@ -31,8 +39,8 @@ namespace PHPSales.Forms
                 tmp.Tag  = itemList[i].id.ToString();
                 ItemListBox.Items.Add(tmp);
             }
-
         }
+
         public void PopulateOrder()
         {
             double total = 0;
@@ -46,12 +54,6 @@ namespace PHPSales.Forms
             }
             ListViewItem tmp = new ListViewItem("Total: "+total.ToString());
             CurrentOrderListBox.Items.Add(tmp);
-        }
-        public AddOrder()
-        {
-            InitializeComponent();
-            PopulateItems();
-            PopulateOrder();
         }
 
         private void AddCurOrder(object sender, EventArgs e)
@@ -71,9 +73,10 @@ namespace PHPSales.Forms
                 MessageBox.Show("No item selected");
             }    
         }
-        private void Button6_Click(object sender, EventArgs e)
+
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.LoadForm(new DashboardForm());
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -99,5 +102,7 @@ namespace PHPSales.Forms
                 MessageBox.Show("No item in current order list selected");
             }
         }
+
     }
+
 }
