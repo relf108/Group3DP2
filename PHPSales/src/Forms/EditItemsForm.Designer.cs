@@ -1,6 +1,6 @@
 ﻿namespace PHPSales.Forms
 {
-    partial class EditOrdersForm
+    partial class EditItemsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -112,7 +112,7 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Value:";
             // 
-            // EditOrdersForm
+            // EditItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,9 +125,9 @@
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.ItemListBox);
-            this.Name = "EditOrdersForm";
+            this.Name = "EditItemsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ItemList";
+            this.Text = "PHP - Items";
             this.ResumeLayout(false);
             this.PerformLayout();
 

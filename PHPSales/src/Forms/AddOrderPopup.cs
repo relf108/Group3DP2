@@ -10,10 +10,10 @@ using SqliteAPI.Objects;
 
 namespace PHPSales.Forms
 {
-    public partial class EditOrderPopup : Form
+    public partial class AddOrderPopup : Form
     {
         int id;
-        public EditOrderPopup(int editIndex,string editDate)
+        public AddOrderPopup(int editIndex,string editDate)
         {
             InitializeComponent();
             populateItems();

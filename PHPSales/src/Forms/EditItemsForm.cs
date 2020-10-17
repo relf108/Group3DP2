@@ -7,10 +7,10 @@ using SqliteAPI;
 namespace PHPSales.Forms
 {
 
-    public partial class EditOrdersForm : Form
+    public partial class EditItemsForm : Form
     {
     
-        public EditOrdersForm()
+        public EditItemsForm()
         {
             InitializeComponent();
             PopulateItems();

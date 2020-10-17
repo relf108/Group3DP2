@@ -92,9 +92,9 @@
             this.AdminCheck.AutoSize = true;
             this.AdminCheck.Location = new System.Drawing.Point(371, 245);
             this.AdminCheck.Name = "AdminCheck";
-            this.AdminCheck.Size = new System.Drawing.Size(67, 19);
+            this.AdminCheck.Size = new System.Drawing.Size(73, 19);
             this.AdminCheck.TabIndex = 5;
-            this.AdminCheck.Text = "Admin?";
+            this.AdminCheck.Text = "Is Admin";
             this.AdminCheck.UseVisualStyleBackColor = true;
             // 
             // textBox2

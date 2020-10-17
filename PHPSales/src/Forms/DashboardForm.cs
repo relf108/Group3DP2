@@ -39,7 +39,7 @@ namespace PHPSales.Forms
 
         private void btnEditOrders_Click(object sender, EventArgs e)
         {
-            this.LoadForm(new EditOrdersForm());
+            this.LoadForm(new EditItemsForm());
         }
 
         private void btnManageUsers_Click(object sender, EventArgs e)

@@ -90,7 +90,7 @@ namespace PHPSales.Forms
                 string editDate = RecordFunctions.getRecordByID(editIndex).saleDate;
 
                 //edit the record int the DB
-                EditOrderPopup editorder = new EditOrderPopup(editIndex,editDate);
+                AddOrderPopup editorder = new AddOrderPopup(editIndex,editDate);
                 editorder.Show();
 
                 //Re-populate the list box

@@ -38,7 +38,8 @@
             // 
             // btnViewOrders
             // 
-            this.btnViewOrders.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnViewOrders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnViewOrders.BackColor = System.Drawing.Color.White;
             this.btnViewOrders.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewOrders.FlatAppearance.BorderSize = 0;
@@ -62,7 +63,8 @@
             // 
             // btnAddOrders
             // 
-            this.btnAddOrders.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAddOrders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddOrders.BackColor = System.Drawing.Color.White;
             this.btnAddOrders.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddOrders.FlatAppearance.BorderSize = 0;
@@ -78,7 +80,7 @@
             this.btnAddOrders.Padding = new System.Windows.Forms.Padding(20, 0, 40, 0);
             this.btnAddOrders.Size = new System.Drawing.Size(762, 99);
             this.btnAddOrders.TabIndex = 1;
-            this.btnAddOrders.Text = "Add Order";
+            this.btnAddOrders.Text = "Edit Orders";
             this.btnAddOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAddOrders.UseVisualStyleBackColor = false;
@@ -86,7 +88,8 @@
             // 
             // btnManageUsers
             // 
-            this.btnManageUsers.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnManageUsers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnManageUsers.BackColor = System.Drawing.Color.White;
             this.btnManageUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnManageUsers.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -112,7 +115,8 @@
             // 
             // btnEditOrders
             // 
-            this.btnEditOrders.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEditOrders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditOrders.BackColor = System.Drawing.Color.White;
             this.btnEditOrders.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditOrders.FlatAppearance.BorderSize = 0;
@@ -128,7 +132,7 @@
             this.btnEditOrders.Padding = new System.Windows.Forms.Padding(20, 0, 40, 0);
             this.btnEditOrders.Size = new System.Drawing.Size(762, 99);
             this.btnEditOrders.TabIndex = 3;
-            this.btnEditOrders.Text = "Edit Orders";
+            this.btnEditOrders.Text = "Edit Items";
             this.btnEditOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnEditOrders.UseVisualStyleBackColor = false;
@@ -138,7 +142,6 @@
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Transparent;
             this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(52)))), ((int)(((byte)(69)))));
@@ -161,9 +164,9 @@
             // 
             // btnExportSales
             // 
+            this.btnExportSales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportSales.BackColor = System.Drawing.Color.Transparent;
             this.btnExportSales.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExportSales.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnExportSales.FlatAppearance.BorderSize = 0;
             this.btnExportSales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExportSales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(52)))), ((int)(((byte)(69)))));
@@ -207,10 +210,10 @@
             this.Controls.Add(this.btnManageUsers);
             this.Controls.Add(this.btnAddOrders);
             this.Controls.Add(this.btnViewOrders);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "DashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "PHP - Dashboard";
             this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 
