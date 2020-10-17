@@ -14,37 +14,49 @@ namespace PHPSales.Forms
             InitializeComponent();
         }
 
-        private void LoginButton_Click_1(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
+            lblWrongLogin.Visible = false;
+            lblEmptyUsername.Visible = false;
+            lblEmptyPassword.Visible = false;
+
+            if (tbxUsername.Text == "" || tbxPassword.Text == "")
+            {
+                lblEmptyUsername.Visible = (tbxUsername.Text == "");
+                lblEmptyPassword.Visible = (tbxPassword.Text == "");
+                return;
+            } 
+
             try
             {
-                bool userLvl = UserFunctions.authUser(UsernameTextBox.Text.ToString(), PasswordTextBox.Text.ToString());
+                bool userLvl = UserFunctions.authUser(tbxUsername.Text.ToString(), tbxPassword.Text.ToString());
                 PHPApplication.instance.LoadForm(new Dashboard(userLvl));
             }
             catch
             {
-                MessageBox.Show("Failed to login!");
+                lblWrongLogin.Visible = true;
+                //MessageBox.Show("Failed to login!");
             }
         }
 
-        private void Bypass_Click(object sender, EventArgs e)
+        private void btnUserBypass_Click(object sender, EventArgs e)
         {
             PHPApplication.instance.LoadForm(new Dashboard(false));
         }
 
-        private void AdminBypass_Click(object sender, EventArgs e)
+        private void btnAdminBypass_Click(object sender, EventArgs e)
         {
             PHPApplication.instance.LoadForm(new Dashboard(true));
         }
 
-        private void buttonLogin_MouseEnter(object sender, EventArgs e)
+        private void btnLogin_MouseEnter(object sender, EventArgs e)
         {
-            buttonLogin.ForeColor = Color.White;
+            btnLogin.ForeColor = Color.White;
         }
 
-        private void buttonLogin_MouseLeave(object sender, EventArgs e)
+        private void btnLogin_MouseLeave(object sender, EventArgs e)
         {
-            buttonLogin.ForeColor = Color.Black;
+            btnLogin.ForeColor = Color.Black;
         }
     }
 
